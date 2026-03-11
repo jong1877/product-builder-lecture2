@@ -1,24 +1,51 @@
+:root {
+    --bg-color: #f0f2f5;
+    --container-bg: #ffffff;
+    --text-color: #333333;
+    --btn-primary: #008CBA;
+    --btn-primary-hover: #007B9A;
+    --btn-primary-active: #005F6B;
+    --number-bg: #4CAF50;
+    --number-color: #ffffff;
+    --shadow: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] {
+    --bg-color: #121212;
+    --container-bg: #1e1e1e;
+    --text-color: #e0e0e0;
+    --btn-primary: #00bcd4;
+    --btn-primary-hover: #00acc1;
+    --btn-primary-active: #0097a7;
+    --number-bg: #81c784;
+    --number-color: #121212;
+    --shadow: rgba(255, 255, 255, 0.05);
+}
 
 body {
-    background-color: #f0f2f5;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     font-family: 'Helvetica Neue', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .container {
     text-align: center;
-    background-color: white;
+    background-color: var(--container-bg);
     padding: 40px;
     border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px var(--shadow);
+    transition: background-color 0.3s, box-shadow 0.3s;
+    position: relative;
 }
 
 h1 {
-    color: #333;
+    color: var(--text-color);
     margin-bottom: 30px;
 }
 
@@ -31,8 +58,8 @@ h1 {
 .number {
     width: 60px;
     height: 60px;
-    background-color: #4CAF50;
-    color: white;
+    background-color: var(--number-bg);
+    color: var(--number-color);
     font-size: 24px;
     font-weight: bold;
     border-radius: 50%;
@@ -41,10 +68,11 @@ h1 {
     align-items: center;
     margin: 0 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, color 0.3s;
 }
 
 #generate {
-    background-color: #008CBA;
+    background-color: var(--btn-primary);
     color: white;
     border: none;
     padding: 15px 30px;
@@ -55,10 +83,29 @@ h1 {
 }
 
 #generate:hover {
-    background-color: #007B9A;
+    background-color: var(--btn-primary-hover);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 #generate:active {
-    background-color: #005F6B;
+    background-color: var(--btn-primary-active);
+}
+
+.theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: 2px solid var(--text-color);
+    color: var(--text-color);
+    padding: 5px 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.theme-toggle:hover {
+    background-color: var(--text-color);
+    color: var(--container-bg);
 }
